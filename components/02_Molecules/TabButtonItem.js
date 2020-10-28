@@ -31,7 +31,7 @@ const ButtonWrapper = styled.button`
   line-height: 16px;
   background-color: transparent;
   cursor: pointer;
-  color: ${(props) => (props.isActive ? "Green" : "Black")};
+  color: ${(props) => (props.isActive ? "White" : "Black")};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,7 +54,7 @@ const ButtonWrapper = styled.button`
     font-size: 12px;
     border-radius: 50%;
     transition: all 400ms ease-in-out 200ms;
-    color: #82c315;
-    background-color: rgba(130, 195, 21, 0.15);
+    color: ${(props) => (props.isActive ? "White" : "#82c315")};
+    background-color: ${(props) => (props.isActive ? "#ffffff20" : "#82c31520")};
   }
 `;

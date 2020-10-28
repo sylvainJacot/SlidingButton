@@ -6,20 +6,26 @@ import { TabButtonsItems } from "../../01_Atoms/TabButtons-Data";
 const TabButtons = () => {
   const [buttonProps, setButtonProps] = useState(TabButtonsItems);
 
-  // ////////////   FIND INDEX OF   ////////////
-  const indexoflol = TabButtonsItems.findIndex(
-    (item) => item.label === "Coffee"
-  );
-  console.log(indexoflol);
+  // ////////////   STATE OF SLIDING BUTTON (TRANSLATE X )  ////////////
 
-  // ////////////   STATE OF TRANSLATE X  ////////////
   const [slidingbtn, setSlidingButton] = useState("0");
+
+  // //////////// HANDLE CLIK BUTTON  ////////////
 
   const HandleButtonState = (index) => {
     const Buttons = [...buttonProps];
+
+    // Get index of targeted element
+
     const TargetIndex = Buttons.indexOf(Buttons[index]);
+
+    // Change CSS with the index value for the sliding button
+
     setSlidingButton(TargetIndex);
-    Buttons[index].isActive = !Buttons[index].isActive;
+
+    console.log(Buttons);
+
+    // Buttons[index].isActive = true;
     setButtonProps(Buttons);
   };
 
@@ -82,4 +88,3 @@ const SlidingButton = styled.div`
   letter-spacing: 0;
   line-height: 16px;
 `;
-// translateX(calc(2*(158px + 16px)))

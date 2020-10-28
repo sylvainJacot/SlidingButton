@@ -14,4 +14,6 @@ export default HomePage;
 const HomeContainer = styled.div`
 background-color:white;
 height: 100%;
+display: flex;
+align-items: center;
 `;
