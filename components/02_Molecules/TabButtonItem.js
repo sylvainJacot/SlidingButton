@@ -31,7 +31,6 @@ const ButtonWrapper = styled.button`
   line-height: 16px;
   background-color: transparent;
   cursor: pointer;
-  transition: background-color 200ms ease-in-out, color 300ms ease-in-out 300ms;
   color: ${(props) => (props.isActive ? "Green" : "Black")};
   display: flex;
   justify-content: center;

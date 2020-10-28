@@ -4,15 +4,27 @@ import TabButtonItem from "../../02_Molecules/TabButtonItem";
 import { TabButtonsItems } from "../../01_Atoms/TabButtons-Data";
 
 const TabButtons = () => {
-
   const [buttonProps, setButtonProps] = useState(TabButtonsItems);
 
+  // ////////////   FIND INDEX OF   ////////////
+  const indexoflol = TabButtonsItems.findIndex(
+    (item) => item.label === "Coffee"
+  );
+  console.log(indexoflol);
+
+  // ////////////   STATE OF TRANSLATE X  ////////////
+  const [slidingbtn, setSlidingButton] = useState("0");
+
   const HandleButtonState = (index) => {
-    const TabButtons = [...buttonProps];
-    TabButtons[index].isActive = !TabButtons[index].isActive;
-    // setButtonProps(TabButtons);
-    console.log(TabButtons[index].isActive);
+    const Buttons = [...buttonProps];
+    const TargetIndex = Buttons.indexOf(Buttons[index]);
+    setSlidingButton(TargetIndex);
+    Buttons[index].isActive = !Buttons[index].isActive;
+    setButtonProps(Buttons);
   };
+
+  // const Buttons = [...buttonProps];
+  // console.log(Buttons);
 
   return (
     <>
@@ -27,7 +39,7 @@ const TabButtons = () => {
             />
           </div>
         ))}
-        <SlidingButton></SlidingButton>
+        <SlidingButton transformxbutton={slidingbtn}></SlidingButton>
       </ButtonsWrapper>
     </>
   );
@@ -35,7 +47,7 @@ const TabButtons = () => {
 
 export default TabButtons;
 
-const ButtonsWrapper = styled.form`
+const ButtonsWrapper = styled.div`
   position: relative;
   width: 100%;
   margin: 0 auto;
@@ -62,9 +74,12 @@ const SlidingButton = styled.div`
   box-shadow: 0 4px 8px 0 rgba(12, 17, 43, 0.12),
     0 1px 4px 0 rgba(12, 17, 43, 0.16);
   transition: transform 600ms ease-in-out;
-  transform: translateX(0);
+  transform: translateX(
+    calc(${(props) => props.transformxbutton}* (158px + 16px))
+  );
   font-size: 16px;
   font-weight: 600;
   letter-spacing: 0;
   line-height: 16px;
 `;
+// translateX(calc(2*(158px + 16px)))
