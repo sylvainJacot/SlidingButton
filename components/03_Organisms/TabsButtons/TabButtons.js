@@ -4,33 +4,17 @@ import TabButtonItem from "../../02_Molecules/TabButtonItem";
 import { TabButtonsItems } from "../../01_Atoms/TabButtons-Data";
 
 const TabButtons = () => {
-  const [buttonProps, setButtonProps] = useState(TabButtonsItems);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  // ////////////   STATE OF SLIDING BUTTON (TRANSLATE X )  ////////////
-
-  const [slidingbtn, setSlidingButton] = useState("0");
-
-  // //////////// HANDLE CLIK BUTTON  ////////////
+  // //////////// HANDLE CLICK BUTTON  ////////////
 
   const HandleButtonState = (index) => {
-    const Buttons = [...buttonProps];
-
-    // Get index of targeted element
+    const Buttons = [...TabButtonsItems];
 
     const TargetIndex = Buttons.indexOf(Buttons[index]);
 
-    // Change CSS with the index value for the sliding button
-
-    setSlidingButton(TargetIndex);
-
-    console.log(Buttons);
-
-    // Buttons[index].isActive = true;
-    setButtonProps(Buttons);
+    setActiveIndex(TargetIndex);
   };
-
-  // const Buttons = [...buttonProps];
-  // console.log(Buttons);
 
   return (
     <>
@@ -40,12 +24,12 @@ const TabButtons = () => {
             <TabButtonItem
               label={item.label}
               ItemOrderlist={item.id}
-              isActive={item.isActive}
+              isActive={index === activeIndex}
               onClick={() => HandleButtonState(index)}
             />
           </div>
         ))}
-        <SlidingButton transformxbutton={slidingbtn}></SlidingButton>
+        <SlidingButton transformxbutton={activeIndex}></SlidingButton>
       </ButtonsWrapper>
     </>
   );

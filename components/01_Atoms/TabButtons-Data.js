@@ -2,7 +2,7 @@ export const TabButtonsItems = [
     {
       id: 1,
       label: "Wake up",
-      isActive: true,
+      isActive: false,
     },
     {
       id: 2,

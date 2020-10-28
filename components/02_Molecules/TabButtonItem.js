@@ -35,10 +35,15 @@ const ButtonWrapper = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 400ms ease-in-out 200ms;
 
   &:hover {
     filter: opacity(0.9);
     background-color: rgba(31, 56, 197, 0.08);
+  }
+
+  &:focus {
+    outline: 0;
   }
 
   &:before {
@@ -55,6 +60,7 @@ const ButtonWrapper = styled.button`
     border-radius: 50%;
     transition: all 400ms ease-in-out 200ms;
     color: ${(props) => (props.isActive ? "White" : "#82c315")};
-    background-color: ${(props) => (props.isActive ? "#ffffff20" : "#82c31520")};
+    background-color: ${(props) =>
+      props.isActive ? "#ffffff20" : "#82c31520"};
   }
 `;
